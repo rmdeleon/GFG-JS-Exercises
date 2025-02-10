@@ -9,18 +9,12 @@ function maxCommStr(s1, s2) {
     // every pair. Finally return max of all maximums.
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
-            if (s1.charAt(i) === s2.charAt(j)) { // found one match
-                let newMax = 1;
-                let newI = i + 1;
-                let newJ = j + 1;
-                while ( newI < m && newJ < n && s1.charAt(newI++) === s2.charAt(newJ++)) {
-                    debugger;
-                    newMax++;
-                }
-                if (newMax > res) {
-                    res = newMax;
-                }
+            let curr = 0;
+            while ( ((i + curr) < m) && ((j + curr) < n) 
+                && (s1.charAt(i + curr) === s2.charAt(j + curr))) {
+                curr++;
             }
+            res = Math.max(res, curr);
         }
     }
     return res;
